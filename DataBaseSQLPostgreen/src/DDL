@@ -1,0 +1,44 @@
+CREATE TABLE CLIENTE (
+    id_cliente SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20),
+    email VARCHAR(100)
+);
+
+CREATE TABLE VEICULO (
+    placa VARCHAR(10) PRIMARY KEY,
+    tipo VARCHAR(20),
+    modelo VARCHAR(50),
+    marca VARCHAR(50),
+    cor VARCHAR(20),
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES CLIENTE(id_cliente)
+);
+
+CREATE TABLE VAGA (
+    id_vaga INT PRIMARY KEY,
+    setor VARCHAR(10),
+    tipo VARCHAR(20),
+    status VARCHAR(10) CHECK (status IN ('LIVRE', 'OCUPADA')),
+    andar INT
+);
+
+CREATE TABLE FUNCIONARIO (
+    id_funcionario SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    turno VARCHAR(20),
+    matricula VARCHAR(20) UNIQUE
+);
+
+CREATE TABLE MOVIMENTACAO (
+    id_mov SERIAL PRIMARY KEY,
+    placa_veiculo VARCHAR(10),
+    id_vaga INT,
+    id_funcionario INT,
+    data_entrada TIMESTAMP NOT NULL,
+    data_saida TIMESTAMP,
+    valor_pago DECIMAL(10, 2),
+    FOREIGN KEY (placa_veiculo) REFERENCES VEICULO(placa),
+    FOREIGN KEY (id_vaga) REFERENCES VAGA(id_vaga),
+    FOREIGN KEY (id_funcionario) REFERENCES FUNCIONARIO(id_funcionario)
+);

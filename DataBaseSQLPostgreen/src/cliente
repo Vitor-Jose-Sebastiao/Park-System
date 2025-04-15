@@ -1,0 +1,54 @@
+public class Cliente {
+    private int id;
+    private String nome;
+    private String telefone;
+    private String email;
+
+    // Construtores, getters e setters
+}
+
+
+public class Veiculo {
+    private String placa;
+    private String tipo;
+    private String modelo;
+    private String marca;
+    private String cor;
+    private Cliente cliente;
+
+    // Construtores, getters e setters
+}
+
+
+public class Vaga {
+    private int id;
+    private String setor;
+    private String tipo;
+    private String status;
+    private int andar;
+
+    // Construtores, getters e setters
+}
+
+
+public class Funcionario {
+    private int id;
+    private String nome;
+    private String turno;
+    private String matricula;
+
+    // Construtores, getters e setters
+}
+
+
+public class Movimentacao {
+    private int id;
+    private Veiculo veiculo;
+    private Vaga vaga;
+    private Funcionario funcionario;
+    private LocalDateTime dataEntrada;
+    private LocalDateTime dataSaida;
+    private double valorPago;
+
+    // Construtores, getters e setters
+}

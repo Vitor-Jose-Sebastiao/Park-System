@@ -1,0 +1,9 @@
+public class CalculadoraValor {
+    public static double calcularValor(LocalDateTime entrada, LocalDateTime saida) {
+        Duration duracao = Duration.between(entrada, saida);
+        long minutos = duracao.toMinutes();
+        double horas = Math.ceil(minutos / 60.0);
+        double precoPorHora = 5.0;
+        return horas * precoPorHora;
+    }
+}
